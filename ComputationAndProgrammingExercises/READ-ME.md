@@ -1,0 +1,2 @@
+# Intro to Computation and Programming Using Python
+The code in this folder are my solutions to the exercises in John V. Guttag's [Introduction to Computation and Programming Using Python](https://smile.amazon.com/Introduction-Computation-Programming-Using-Python/dp/0262525003/ref=sr_1_fkmrnull_4?crid=2HJS0F4UFVGI7&keywords=intro+to+computation+and+programming+using+python&qid=1550695065&s=gateway&sprefix=intro+to+computation%2Caps%2C222&sr=8-4-fkmrnull). I completed them for fun when I read the corresponding book in January 2017.
