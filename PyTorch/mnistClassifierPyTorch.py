@@ -125,7 +125,7 @@ images, labels = detaiter.next()
 
 classes = [0,1,2,3,4,5,6,7,8,9]
 # print images
-plt.imshow(torchvision.utils.make_grid(images[1]))
+#plt.imshow(torchvision.utils.make_grid(images[1]))
 print('GroundTruth: ', ' '.join('%5s' % classes[labels[j]] for j in range(10)))
 
 output = net(images)
@@ -139,4 +139,9 @@ with torch.no_grad():
     for data in testloader:
         images, labels = data
         outputs = net(images)
-        
+        _, predicted = torch.max(outputs.data, 1)
+        total += labels.size(0)
+        correct += (predicted == labels).sum().item()
+
+print('Accuracy of the network on the 10000 test images: %d %%' % (
+    100 * correct / total))
