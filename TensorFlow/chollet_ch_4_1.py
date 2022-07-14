@@ -6,16 +6,12 @@ import numpy as np
 from tensorflow import keras
 from tensorflow.keras import layers
 
+from preprocessing import vectorize_sequences
 
 (train_data, train_labels), (test_data, test_labels) = imdb.load_data(num_words=10000)
 
 
-def vectorize_sequences(sequences, dimension=10000):
-    results = np.zeros((len(sequences), dimension))
-    for i, sequence in enumerate(sequences):
-        for j in sequence:
-            results[i, j] = 1.
-    return results
+
 
 
 x_train = vectorize_sequences(train_data)
