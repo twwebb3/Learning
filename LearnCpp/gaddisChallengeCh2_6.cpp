@@ -15,3 +15,19 @@ multiplying the employee's pay amount by the number of pay periods
 in a year, and store the result in the annualPay variable. Display
 the total annual pay on the screen.
 */
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int payAmount=1700,
+		payPeriods=26,
+		annualPay;
+
+	annualPay=payAmount*payPeriods;
+
+	cout << "Total annual pay: " << annualPay << endl;
+
+	return 0;
+}
