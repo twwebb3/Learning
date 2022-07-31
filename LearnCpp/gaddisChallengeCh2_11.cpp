@@ -8,3 +8,24 @@ driven on the highway.
 Hint: The following formula can be used to calculate the distance:
 Distance = Number of Gallons X Average MPG
 */
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int tankCapacity=20;
+	double townMpg=21.5,
+		   highwayMpg=26.8,
+		   townRange,
+		   highwayRange;
+
+	townRange=tankCapacity*townMpg;
+	highwayRange=tankCapacity*highwayMpg;
+
+	cout << "Town range: " << townRange << " miles." << endl
+		 << "Highway range: " << highwayRange << " miles." << endl;
+
+	return 0;
+}
+
