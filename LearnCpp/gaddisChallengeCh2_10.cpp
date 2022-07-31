@@ -7,3 +7,19 @@ the result on the screen.
 Hint: Use the following formula to calculate MPG:
 MPG = Miles Driven / Gallons of Gas Used
 */
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int tankCapacity=12,
+		mileRange=350;
+	double mpg;
+
+	mpg=mileRange/tankCapacity;
+
+	cout << "The car gets: " << mpg << "MPG." << endl;
+
+	return 0;
+}
