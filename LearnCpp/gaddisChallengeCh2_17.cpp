@@ -6,5 +6,29 @@ following:
 
 * The amount paid for the stock alone (w/o commission)
 * The amount of the commision
-* The total amount paid (for the stock plust the commission)
+* The total amount paid (for the stock plus the commission)
 */
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+	int sharesPurchased=600;
+	double stockPrice=21.77,
+		   commissionRate=0.02,
+		   stockPurchaseWoCommission,
+		   commissionAmount,
+		   totalPaid;
+
+	stockPurchaseWoCommission=sharesPurchased*stockPrice;
+	commissionAmount=ceil(100*stockPurchaseWoCommission*commissionRate)/100;
+	totalPaid=stockPurchaseWoCommission+commissionAmount;
+
+	cout << "Amount paid (w/o commission): $" << stockPurchaseWoCommission << endl
+		 << "Commission Amount: $" << commissionAmount << endl
+		 << "Total Paid: $" << totalPaid << endl;
+
+	return 0;
+}
