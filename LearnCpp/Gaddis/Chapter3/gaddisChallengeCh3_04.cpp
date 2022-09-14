@@ -16,7 +16,8 @@ using namespace std;
 
 int main()
 {
-	char month1Name, month2Name, month3Name;
+	const int SIZE=15;
+	char month1Name[SIZE], month2Name[SIZE], month3Name[SIZE];
 	float month1Rain, month2Rain, month3Rain, averageRainfall;
 
 	cout << "Name month 1: ";
