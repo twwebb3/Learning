@@ -8,3 +8,23 @@ weighs by itself and with the widgets stacked on it.
 It should then calculate and display the number of
 widgets stacked on the pallet.
 */
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	float totalWeight,
+		  widgetWeight=9.2,
+		  widgetCount;
+
+	cout << "How much does the loaded pallet weigh? ";
+	cin >> totalWeight;
+
+	widgetCount = totalWeight/widgetWeight; // assume fractions of widgets are stackable
+
+	cout << "There are " << widgetCount << " widgets stacked on the pallet." << endl;
+
+	return 0;
+}
