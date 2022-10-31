@@ -23,19 +23,22 @@ class reutersModel(keras.Model):
 
     def __init__(self, num_categories):
         super().__init__()
-        self.inputs = keras.Input(shape=(10000,))
+        # self.inputs = keras.Input(shape=(10000,))
         self.inner_layer = layers.Dense(64, activation="relu")
         self.classifier = layers.Dense(num_categories, activation="softmax")
 
     def call(self, inputs):
         features = self.inner_layer(inputs)
-        features = self.inner_layer(features)
-        features = self.inner_layer(features)
+        # features = self.inner_layer(features)
+        # features = self.inner_layer(features)
         outputs = self.classifier(features)
         return outputs
 
 
-model = reutersModel(num_categories=46)
+inputs = keras.Input(shape=(10000,), name="reuters_input")
+outputs = reutersModel(num_categories=46)(inputs)
+
+model = keras.Model(inputs=inputs, outputs=outputs)
 
 
 model.compile(optimizer="rmsprop",
