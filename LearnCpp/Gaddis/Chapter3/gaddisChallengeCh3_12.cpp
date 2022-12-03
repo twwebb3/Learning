@@ -26,3 +26,41 @@ County Sales Tax:	$   501.38
 State Sales Tax:	$  1002.75
 Total Sales Tax:	$  1504.13
 */
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+    // Variables
+    string month;
+    int year;
+    double totalCollected, sales, countySalesTax, stateSalesTax, totalSalesTax;
+    
+    // Get user input
+    cout << "Enter the month: ";
+    cin >> month;
+    cout << "Enter the year: ";
+    cin >> year;
+    cout << "Enter the total amount collected at the cash register: ";
+    cin >> totalCollected;
+    
+    // Calculate sales
+    sales = totalCollected / 1.06;
+    
+    // Calculate sales tax
+    countySalesTax = sales * 0.02;
+    stateSalesTax = sales * 0.04;
+    totalSalesTax = countySalesTax + stateSalesTax;
+    
+    // Display report
+    cout << "Total Collected: $" << setw(10) << totalCollected << endl;
+    cout << "Sales: $" << setw(20) << sales << endl;
+    cout << "County Sales Tax: $" << setw(15) << countySalesTax << endl;
+    cout << "State Sales Tax: $" << setw(16) << stateSalesTax << endl;
+    cout << "Total Sales Tax: $" << setw(16) << totalSalesTax << endl;
+
+    return 0;
+    
+}
