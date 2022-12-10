@@ -48,7 +48,7 @@ int main()
     // Write the data to the file
     outputFile << "Total Collected: $" << setw(10) << totalCollected << endl;
     outputFile << "Sales: $" << setw(20) << totalSales << endl;
-    outputFile << "County Sales Tax: $" << setw(15) << countyTax << endl;
+    outputFile << "County Sales Tax: $" << setw(9) << countyTax << endl;
     outputFile << "State Tax: $" << setw(16) << stateTax << endl;
     outputFile << "Total Tax: $" << setw(16) << totalTax << endl;
 
