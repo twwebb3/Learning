@@ -22,3 +22,38 @@ Write a program that displays the following information:
   plays is a negative number, then Joe lost money on the transaction.)
 
 */
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+    // Declare variables
+    int shares = 1000;
+    double purchasePrice = 32.87;
+    double purchaseCommission = 0.02;
+    double salePrice = 33.92;
+    double saleCommission = 0.02;
+    double purchaseTotal;
+    double saleTotal;
+    double profit;
+
+    // Calculate the total amount paid for the stock
+    purchaseTotal = shares * purchasePrice;
+
+    // Calculate the total amount paid for the stock
+    saleTotal = shares * salePrice;
+
+    // Calculate the profit
+    profit = (saleTotal - purchaseTotal) - (purchaseTotal * purchaseCommission) - (saleTotal * saleCommission);
+
+    // Display the results
+    cout << "Joe paid $" << purchaseTotal << " for the stock." << endl;
+    cout << "Joe paid $" << purchaseTotal * purchaseCommission << " in commission when he bought the stock." << endl;
+    cout << "Joe sold the stock for $" << saleTotal << endl;
+    cout << "Joe paid $" << saleTotal * saleCommission << " in commission when he sold the stock." << endl;
+    cout << "Joe made a profit of $" << profit << endl;
+
+    return 0;
+}
