@@ -7,6 +7,8 @@ using namespace std;
 
 int main()
 {
+    int choice;
+
     // Display the menu
     cout << "    Serendipity Booksellers" << endl;
     cout << "      Inventory Database" << endl;
@@ -19,7 +21,8 @@ int main()
 
     cout << endl; // Blank line
 
-    cout << "Enter your choice: " << endl;
+    cout << "Enter your choice: ";
+    cin >> choice;
 
     return 0;
 }
