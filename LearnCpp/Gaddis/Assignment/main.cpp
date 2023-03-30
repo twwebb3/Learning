@@ -23,7 +23,31 @@ int main()
     // Allow the user to input a number between 1 and 4
     cin >> choice;
 
+    // validate the input
+    while (choice < 1 || choice > 4)
+    {
+        cout << "Please enter a number between 1 and 4: ";
+        cin >> choice;
+    }
+
     cout << endl; // Blank line
+
+    // use a switch statement to display the users choice
+    switch (choice)
+    {
+        case 1:
+            cout << "You chose 1. Cashier Module" << endl;
+            break;
+        case 2:
+            cout << "You chose 2. Inventory Database Module" << endl;
+            break;
+        case 3:
+            cout << "You chose 3. Report Module" << endl;
+            break;
+        case 4:
+            cout << "You chose 4. Exit" << endl;
+            break;
+    }
 
 
     return 0;
