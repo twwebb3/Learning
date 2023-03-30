@@ -1,0 +1,5 @@
+Total Collected: $   26572.9
+Sales: $             25068.8
+County Sales Tax: $  501.375
+State Tax: $         1002.75
+Total Tax: $         1504.13
