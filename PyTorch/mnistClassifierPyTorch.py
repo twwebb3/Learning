@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Feb 21 16:06:25 2019
-
-@author: twebb
-"""
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -12,12 +6,19 @@ import torch
 import torchvision
 import torchvision.transforms as transforms
 
+import time
+
+start_time = time.time()
+
 def read_pkl(filepath):
     import pickle
     pkl_file = open(filepath, 'rb')
     temp = pickle.load(pkl_file)
     pkl_file.close()
     return temp
+
+# Specify device 135.07
+device = torch.device('mps')
 
 X_train = read_pkl(filepath = 'data/x_train_mnist.pkl')
 X_test = read_pkl(filepath = 'data/x_test_mnist.pkl')
@@ -86,7 +87,8 @@ class Net(nn.Module):
         x = self.fc2(x)
         return F.log_softmax(x, dim=1)
 
-net = Net()
+
+net = Net().to(device)
 print(net)
 
 import torch.optim as optim
@@ -99,7 +101,7 @@ for epoch in range(2):
     running_loss = 0.0
     for i, data in enumerate(trainloader, 0):
             #get inputs
-            inputs, labels = data
+            inputs, labels = data[0].to(device), data[1].to(device)
             
             #zero parameter gradients
             optimizer.zero_grad()
@@ -121,7 +123,8 @@ print('Finished training!')
 
 # testing
 detaiter = iter(testloader)
-images, labels = detaiter.next()
+images, labels = next(detaiter)
+images, labels = images.to(device), labels.to(device)
 
 classes = [0,1,2,3,4,5,6,7,8,9]
 # print images
@@ -137,7 +140,7 @@ correct = 0
 total = 0
 with torch.no_grad():
     for data in testloader:
-        images, labels = data
+        images, labels = data[0].to(device), data[1].to(device)
         outputs = net(images)
         _, predicted = torch.max(outputs.data, 1)
         total += labels.size(0)
@@ -145,3 +148,8 @@ with torch.no_grad():
 
 print('Accuracy of the network on the 10000 test images: %d %%' % (
     100 * correct / total))
+
+end_time = time.time()
+elapsed_time = end_time - start_time
+
+print(f"Time taken: {elapsed_time:.2f} seconds")
