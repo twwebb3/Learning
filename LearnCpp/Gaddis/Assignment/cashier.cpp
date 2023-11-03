@@ -10,71 +10,77 @@ using namespace std;
 
 int main()
 {
-    // create char variable to hold date
-    char date[11];
-    int quantity;
-    char isbn[14];
-    char title[80];
-    float price;
-    float total;
-    float subtotal;
-    float tax;
-    float taxrate = 0.06;
-    float totalTax;
+   char repeat;
 
-    // Display the menu
-    cout << " Serendipity Booksellers" << endl;
-    cout << " Cashier Module" << endl;
+   do
+   {
+       // create char variable to hold date
+       char date[11];
+       int quantity;
+       char isbn[14];
+       char title[80];
+       float price;
+       float total;
+       float subtotal;
+       float tax;
+       float taxrate = 0.06;
+       float totalTax;
 
-    cout << endl; // Blank line
+       // Display the menu
+       cout << " Serendipity Booksellers" << endl;
+       cout << " Cashier Module" << endl;
 
-    cout << "Date: ";
-    cin >> date;
+       cout << endl; // Blank line
 
-    cout << "Quanty of Book: ";
-    cin >> quantity;
+       cout << "Date: ";
+       cin >> date;
 
-    cout << "ISBN: ";
-    cin >> isbn;
+       cout << "Quanty of Book: ";
+       cin >> quantity;
 
-    cout << "Title: ";
-    cin.ignore();
-    cin.getline(title, 80);
-    
+       cout << "ISBN: ";
+       cin >> isbn;
 
-    cout << "Price: ";
-    cin >> price;
+       cout << "Title: ";
+       cin.ignore();
+       cin.getline(title, 80);
 
-    cout << endl; // Blank line
+       cout << "Price: ";
+       cin >> price;
 
-    cout << " Serendipity Booksellers" << endl;
+       cout << endl; // Blank line
 
-    cout << "Date: " << date << endl;
+       cout << " Serendipity Booksellers" << endl;
 
-    cout << endl; // Blank line
+       cout << "Date: " << date << endl;
 
-    total = quantity * price;
-    //round total to 2 decimal places
-    total = round(total * 100) / 100;
-    subtotal = total;
-    tax = subtotal * taxrate;
-    //round tax to 2 decimal places
-    tax = round(tax * 100) / 100;
-    totalTax = subtotal + tax;
-    //round totalTax to 2 decimal places
-    totalTax = round(totalTax * 100) / 100;
+       cout << endl; // Blank line
 
-    cout << "Quantity" << setw(10) << "ISBN" << setw(10) << "Title" << setw(10) << "Price" << setw(10) << "Total" << endl;
-    cout << "------------------------------------------------------------------------------" << endl;
-    cout << quantity << setw(10) << isbn << setw(10) << title << setw(10) << price << setw(10) << total << endl;
-    cout << endl;
-    cout << setw(32) << "Subtotal" << setw(9) << subtotal << endl;
-    cout << setw(32) << "Tax" << setw(9) << tax << endl;
-    cout << setw(32) << "Total" << setw(9) << totalTax << endl;
+       total = quantity * price;
+       //round total to 2 decimal places
+       total = round(total * 100) / 100;
+       subtotal = total;
+       tax = subtotal * taxrate;
+       //round tax to 2 decimal places
+       tax = round(tax * 100) / 100;
+       totalTax = subtotal + tax;
+       //round totalTax to 2 decimal places
+       totalTax = round(totalTax * 100) / 100;
 
-    cout << endl;
-    cout << "Thank You for Shopping at Serendipity!" << endl;
+       cout << "Quantity" << setw(10) << "ISBN" << setw(10) << "Title" << setw(10) << "Price" << setw(10) << "Total" << endl;
+       cout << "------------------------------------------------------------------------------" << endl;
+       cout << quantity << setw(10) << isbn << setw(10) << title << setw(10) << price << setw(10) << total << endl;
+       cout << endl;
+       cout << setw(32) << "Subtotal" << setw(9) << subtotal << endl;
+       cout << setw(32) << "Tax" << setw(9) << tax << endl;
+       cout << setw(32) << "Total" << setw(9) << totalTax << endl;
 
-    return 0;
+       cout << endl;
+       cout << "Thank You for Shopping at Serendipity!" << endl;
+
+       cout << "Do you want to process another transaction? (y/n): ";
+       cin >> repeat;
+   } while (repeat == 'y' || repeat == 'Y');
+
+   return 0;
 }
-
