@@ -5,7 +5,7 @@
 
 using namespace std;
 
-int main()
+int bookInfo()
 {
     cout << " Serendipity Booksellers" << endl; // needs to be centered
     cout << "    Book Information" << endl; // needs to be centered

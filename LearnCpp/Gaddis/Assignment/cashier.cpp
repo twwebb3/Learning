@@ -2,13 +2,14 @@
 Add an input screen for the cashier to enter the quantity of the book and the ISBN of the book.
 */
 
+#include "cashier.h"
 #include <iostream>
 #include <iomanip>
 #include <cmath>
 
 using namespace std;
 
-int main()
+int cashier()
 {
    char repeat;
 
