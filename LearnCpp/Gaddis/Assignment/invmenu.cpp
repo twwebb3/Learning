@@ -1,5 +1,6 @@
 /* create inventory database menu screen with five options and a prompt to enter your choice. */
 
+#include "invmenu.h"
 #include <iostream>
 #include <iomanip>
 

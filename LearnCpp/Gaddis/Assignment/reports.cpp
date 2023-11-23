@@ -1,5 +1,6 @@
 /* create a display screen the allows the user to select from seven reports to view.*/
 
+#include "reports.h"
 #include <iostream>
 #include <iomanip>
 

@@ -1,6 +1,12 @@
 /* Assignment: Create code to display a main menu with a title, four options, and a prompt to enter your choice.*/
 
+// update to call the functions from the other modules
+
+
 #include <iostream>
+#include "cashier.h"
+#include "invmenu.h"
+#include "reports.h"
 
 using namespace std;
 
@@ -38,13 +44,13 @@ int main()
        {
            case 1:
                cout << "You chose 1. Cashier Module" << endl;
-               break;
+                cashier();
            case 2:
                cout << "You chose 2. Inventory Database Module" << endl;
-               break;
+                invMenu();
            case 3:
                cout << "You chose 3. Report Module" << endl;
-               break;
+                reports();
            case 4:
                cout << "You chose 4. Exit" << endl;
                break;
