@@ -45,12 +45,15 @@ int main()
            case 1:
                cout << "You chose 1. Cashier Module" << endl;
                 cashier();
+                break;
            case 2:
                cout << "You chose 2. Inventory Database Module" << endl;
                 invMenu();
+                break;
            case 3:
                cout << "You chose 3. Report Module" << endl;
                 reports();
+                break;
            case 4:
                cout << "You chose 4. Exit" << endl;
                break;
