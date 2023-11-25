@@ -57,3 +57,23 @@ int invMenu()
 
    return 0;
 }
+
+void lookUpBook()
+{
+   cout << "You chose 1. Look Up a Book" << endl;
+}
+
+void addBook()
+{
+   cout << "You chose 2. Add a Book" << endl;
+}
+
+void editBook()
+{
+   cout << "You chose 3. Edit a Book's Record" << endl;
+}
+
+void deleteBook()
+{
+   cout << "You chose 4. Delete a Book" << endl;
+}
