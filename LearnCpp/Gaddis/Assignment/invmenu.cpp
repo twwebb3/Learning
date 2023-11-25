@@ -38,16 +38,16 @@ int invMenu()
        switch (choice)
        {
            case 1:
-               cout << "You chose 1. Look Up a Book" << endl;
+               lookUpBook();
                break;
            case 2:
-               cout << "You chose 2. Add a Book" << endl;
+               addBook();
                break;
            case 3:
-               cout << "You chose 3. Edit a Book's Record" << endl;
+               editBook();
                break;
            case 4:
-               cout << "You chose 4. Delete a Book" << endl;
+               deleteBook();
                break;
            case 5:
                cout << "You chose 5. Return to the Main Menu" << endl;
