@@ -40,22 +40,22 @@ int reports()
         switch (choice)
         {
             case 1:
-                cout << "You chose 1. Inventory Listing" << endl;
+                repListing();
                 break;
             case 2:
-                cout << "You chose 2. Inventory Wholesale Value" << endl;
+                repWholesale();
                 break;
             case 3:
-                cout << "You chose 3. Inventory Retail Value" << endl;
+                repRetail();
                 break;
             case 4:
-                cout << "You chose 4. Listing by Quantity" << endl;
+                repQty();
                 break;
             case 5:
-                cout << "You chose 5. Listing by Cost" << endl;
+                repCost();
                 break;
             case 6:
-                cout << "You chose 6. Listing by Age" << endl;
+                repAge();
                 break;
             case 7:
                 cout << "You chose 7. Return to the Main Menu" << endl;
@@ -64,4 +64,34 @@ int reports()
     } while (choice != 7); // Repeat the loop until the user selects 7
 
     return 0;
+}
+
+void repListing()
+{
+    cout << "You selected Inventory Listing." << endl;
+}
+
+void repWholesale()
+{
+    cout << "You selected Inventory Wholesale Value" << endl;
+}
+
+void repRetail()
+{
+    cout << "You selected Inventory Retail Value" << endl;
+}
+
+void repQty()
+{
+    cout << "You selected Listing by Quantity" << endl;
+}
+
+void repCost()
+{
+    cout << "You selected Listing by Cost" << endl;
+}
+
+void repAge()
+{
+    cout << "You selected Listing by Age" << endl;
 }
