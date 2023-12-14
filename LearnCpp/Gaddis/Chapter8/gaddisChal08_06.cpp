@@ -5,6 +5,8 @@ Program 8-8 as a skeleton to complete.
 */
 
 #include <iostream> 
+#include <cstring>
+
 using namespace std;
 
 int main ()
@@ -19,27 +21,26 @@ int main ()
                                   "Harrison, Rose", "Setzer, Cathy",
                                   "Pike, Gordon", "Holland, Beth" };
 
-    char startScan, minIndex, minValue;
-    char userNum[SIZE];
+    char startScan, minIndex;
+    char minValue[SIZE];
 
     // Selection sort string array
-    for (startScan = 0; startScan < (NUM_NAMES - 1); startScan++)
-    {
+    for (startScan = 0; startScan < (NUM_NAMES - 1); startScan++) {
         minIndex = startScan;
-        minValue = names[startScan][0];
+        strcpy(minValue, names[startScan]);
 
-        for (int index = startScan + 1; index < NUM_NAMES; index++)
-        {
-            // compare the first character of each string check if equal first
-            if (names[index][0] < minValue)
-            {
-                minValue = names[index][0];
+        for (int index = startScan + 1; index < NUM_NAMES; index++) {
+            if (strcmp(names[index], minValue) < 0) {
+                strcpy(minValue, names[index]);
                 minIndex = index;
             }
         }
 
-        names[minIndex][0] = names[startScan][0];
-        names[startScan][0] = minValue;
+        // Swap the elements
+        char temp[SIZE];
+        strcpy(temp, names[startScan]);
+        strcpy(names[startScan], names[minIndex]);
+        strcpy(names[minIndex], temp);
     }
 
     // print sorted array
