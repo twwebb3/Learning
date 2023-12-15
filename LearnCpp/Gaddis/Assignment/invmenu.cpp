@@ -1,8 +1,10 @@
 /* create inventory database menu screen with five options and a prompt to enter your choice. */
 
 #include "invmenu.h"
+#include "globals.h"
 #include <iostream>
 #include <iomanip>
+#include <string>
 
 using namespace std;
 
@@ -65,7 +67,28 @@ void lookUpBook()
 
 void addBook()
 {
-   cout << "You chose 2. Add a Book" << endl;
+    bool empty = false;
+    
+    cout << "You chose 2. Add a Book" << endl;
+
+    // loop through bookTitle array and print contents
+    for (int i = 0; i < ROWS; i++)
+    {
+        if (bookTitle[i].empty())
+        {
+            empty = true;
+        }
+    }
+
+    if (empty)
+    {
+        cout << "There is space in the array." << endl;
+    }
+    else
+    {
+        cout << "There is no space in the array." << endl;
+    }
+
 }
 
 void editBook()
