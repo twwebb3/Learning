@@ -7,16 +7,17 @@
 #include "cashier.h"
 #include "invmenu.h"
 #include "reports.h"
+#include "globals.h"
 
 using namespace std;
 
 // add global arrays
 const int ROWS = 20;
-string bookTitle[ROWS][51];
-string isbn[ROWS][14];
-string author[ROWS][31];
-string publisher[ROWS][31];
-string dateAdded[ROWS][11]; // MM/DD/YYYY
+string bookTitle[ROWS];
+string isbn[ROWS];
+string author[ROWS];
+string publisher[ROWS];
+string dateAdded[ROWS]; // MM/DD/YYYY
 int qtyOnHand[ROWS];
 double wholesale[ROWS];
 double retail[ROWS];
