@@ -3,3 +3,5 @@
 */__pycache__/
 .DS_Store
 .vscode/
+/TensorFlow/cats_vs_dogs_small/
+/TensorFlow/train/
