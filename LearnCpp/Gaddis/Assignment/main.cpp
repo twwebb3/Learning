@@ -12,7 +12,6 @@
 using namespace std;
 
 // add global arrays
-const int ROWS = 20;
 string bookTitle[ROWS];
 string isbn[ROWS];
 string author[ROWS];
