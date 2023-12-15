@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int bookInfo(string isbn[], string title[], string author[], string publisher[], string date[], int qty[], double wholesale[], double retail[])
+int bookInfo()
 {
     cout << " Serendipity Booksellers" << endl; // needs to be centered
     cout << "    Book Information" << endl; // needs to be centered
