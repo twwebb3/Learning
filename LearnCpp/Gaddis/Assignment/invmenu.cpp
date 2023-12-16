@@ -204,5 +204,48 @@ void editBook()
 
 void deleteBook()
 {
-   cout << "You chose 4. Delete a Book" << endl;
+    string title;
+    cout << "You chose 4. Delete a Book" << endl;
+
+    // prompt user to enter book title
+    cout << "Enter book title: ";
+    cin.ignore();
+    getline(cin, title);
+
+    // search for title in bookTitle array
+    for (int i = 0; i < ROWS; i++)
+    {
+        if (title == bookTitle[i])
+        {
+            cout << "Book found!" << endl;
+            cout << "Title: " << bookTitle[i] << endl;
+            cout << "ISBN: " << isbn[i] << endl;
+            cout << "Author: " << author[i] << endl;
+            cout << "Publisher: " << publisher[i] << endl;
+            cout << "Date Added: " << dateAdded[i] << endl;
+            cout << "Quantity-On-Hand: " << qtyOnHand[i] << endl;
+            cout << "Wholesale Cost: " << wholesale[i] << endl;
+            cout << "Retail Price: " << retail[i] << endl;
+
+            // prompt user if they are sure they want to delete the book
+            cout << "Are you sure you want to delete this book? (Y/N): ";
+            char choice;
+            cin >> choice;
+
+            if (choice == 'Y' || choice == 'y')
+            {
+                bookTitle[i] = "";
+                isbn[i] = "";
+                author[i] = "";
+                publisher[i] = "";
+                dateAdded[i] = "";
+                qtyOnHand[i] = 0;
+                wholesale[i] = 0.0;
+                retail[i] = 0.0;
+            }
+        }else
+        {
+            cout << "Book not found." << endl;
+        }
+    }
 }
