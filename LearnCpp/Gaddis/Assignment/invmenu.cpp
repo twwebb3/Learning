@@ -62,7 +62,34 @@ int invMenu()
 
 void lookUpBook()
 {
-   cout << "You chose 1. Look Up a Book" << endl;
+    string title;
+    cout << "You chose 1. Look Up a Book" << endl;
+
+    // prompt user to enter book title
+    cout << "Enter book title: ";
+    cin.ignore();
+    getline(cin, title);
+
+    // search for title in bookTitle array
+    for (int i = 0; i < ROWS; i++)
+    {
+        if (title == bookTitle[i])
+        {
+            cout << "Book found!" << endl;
+            cout << "Title: " << bookTitle[i] << endl;
+            cout << "ISBN: " << isbn[i] << endl;
+            cout << "Author: " << author[i] << endl;
+            cout << "Publisher: " << publisher[i] << endl;
+            cout << "Date Added: " << dateAdded[i] << endl;
+            cout << "Quantity-On-Hand: " << qtyOnHand[i] << endl;
+            cout << "Wholesale Cost: " << wholesale[i] << endl;
+            cout << "Retail Price: " << retail[i] << endl;
+        }else
+        {
+            cout << "Book not found." << endl;
+        }
+    }
+
 }
 
 void addBook()
