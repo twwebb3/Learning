@@ -77,6 +77,32 @@ void addBook()
         if (bookTitle[i].empty())
         {
             empty = true;
+            // prompt user to enter book title
+            cout << "Enter book title: ";
+            cin.ignore();
+            getline(cin, bookTitle[i]);
+
+            cout << "Enter ISBN: ";
+            cin >> isbn[i];
+
+            cout << "Enter author: ";
+            cin.ignore();
+            getline(cin, author[i]);
+
+            cout << "Enter publisher: ";
+            getline(cin, publisher[i]);
+
+            cout << "Enter date added (MM/DD/YYYY): ";
+            getline(cin, dateAdded[i]);
+
+            cout << "Enter quantity on hand: ";
+            cin >> qtyOnHand[i];
+
+            cout << "Enter wholesale cost: ";
+            cin >> wholesale[i];
+
+            cout << "Enter retail price: ";
+            cin >> retail[i];
         }
     }
 
