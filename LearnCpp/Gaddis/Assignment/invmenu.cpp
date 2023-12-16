@@ -146,7 +146,60 @@ void addBook()
 
 void editBook()
 {
-   cout << "You chose 3. Edit a Book's Record" << endl;
+    string title;
+
+    cout << "You chose 3. Edit a Book's Record" << endl;
+
+    // prompt user to enter book title
+    cout << "Enter book title: ";
+    cin.ignore();
+    getline(cin, title);
+
+    // search for title in bookTitle array
+    for (int i = 0; i < ROWS; i++)
+    {
+        if (title == bookTitle[i])
+        {
+            cout << "Book found!" << endl;
+            cout << "Title: " << bookTitle[i] << endl;
+            cout << "ISBN: " << isbn[i] << endl;
+            cout << "Author: " << author[i] << endl;
+            cout << "Publisher: " << publisher[i] << endl;
+            cout << "Date Added: " << dateAdded[i] << endl;
+            cout << "Quantity-On-Hand: " << qtyOnHand[i] << endl;
+            cout << "Wholesale Cost: " << wholesale[i] << endl;
+            cout << "Retail Price: " << retail[i] << endl;
+
+            // prompt user to enter new book title
+            cout << "Enter new book title: ";
+            getline(cin, bookTitle[i]);
+
+            cout << "Enter new ISBN: ";
+            cin >> isbn[i];
+
+            cout << "Enter new author: ";
+            cin.ignore();
+            getline(cin, author[i]);
+
+            cout << "Enter new publisher: ";
+            getline(cin, publisher[i]);
+
+            cout << "Enter new date added (MM/DD/YYYY): ";
+            getline(cin, dateAdded[i]);
+
+            cout << "Enter new quantity on hand: ";
+            cin >> qtyOnHand[i];
+
+            cout << "Enter new wholesale cost: ";
+            cin >> wholesale[i];
+
+            cout << "Enter new retail price: ";
+            cin >> retail[i];
+        }else
+        {
+            cout << "Book not found." << endl;
+        }
+    }
 }
 
 void deleteBook()
