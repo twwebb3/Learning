@@ -1,8 +1,12 @@
 
 import Foundation
 
+func roundToTwoDecimalPlaces(value: Double) -> Double {
+    return (value * 100).rounded() / 100
+}
+
 func generateRandomTemp() -> Double {
-    return Double.random(in: 0...100)
+    return roundToTwoDecimalPlaces(value: Double.random(in: 0...100))
 }
 
 func generateWindCondition() -> String {
@@ -25,7 +29,7 @@ func generateCloudCoverage() -> String {
 
 func generatePrecipitationChance(isCloudy: String) -> Double {
     if isCloudy=="cloudy" {
-        return Double.random(in: 0...1)
+        return roundToTwoDecimalPlaces(value: Double.random(in: 0...1))
     } else {
         return 0
     }
