@@ -1,6 +1,15 @@
 
 import Foundation
 
+struct WeatherDay {
+    var temperature: Double
+    var windCondition: String
+    var windSpeed: Int
+    var cloudCoverage: String
+    var precipitationChance: Double
+    var precipitationType: String
+}
+
 func roundToTwoDecimalPlaces(value: Double) -> Double {
     return (value * 100).rounded() / 100
 }
@@ -43,18 +52,29 @@ func generatePrecipitationType(precipitationChance: Double, temperature: Double)
     }
 }
 
-func todaysWeather() {
+func generateWeatherDay() -> WeatherDay {
     let temperature = generateRandomTemp()
     let windCondition = generateWindCondition()
     let windSpeed = generateWindSpeed(isWindy: windCondition)
     let cloudCoverage = generateCloudCoverage()
     let precipitationChance = generatePrecipitationChance(isCloudy: cloudCoverage)
     let precipitationType = generatePrecipitationType(precipitationChance: precipitationChance, temperature: temperature)
+
+    return WeatherDay(temperature: temperature,
+                      windCondition: windCondition,
+                      windSpeed: windSpeed,
+                      cloudCoverage: cloudCoverage,
+                      precipitationChance: precipitationChance,
+                      precipitationType: precipitationType)
+}
+
+func todaysWeather() {
+    let todaysWeather = generateWeatherDay()
     
     print("Here is today's weather: ")
-    print("Temperature: \(temperature)°F")
-    print("Wind Condition: \(windCondition)")
-    print("Wind Speed: \(windSpeed)")
-    print("Cloud Coverage: \(cloudCoverage)")
-    print("Precipitation: There's a \(precipitationChance)% chance of \(precipitationType).")
+    print("Temperature: \(todaysWeather.temperature)°F")
+    print("Wind Condition: \(todaysWeather.windCondition)")
+    print("Wind Speed: \(todaysWeather.windSpeed)")
+    print("Cloud Coverage: \(todaysWeather.cloudCoverage)")
+    print("Precipitation: There's a \(todaysWeather.precipitationChance)% chance of \(todaysWeather.precipitationType).")
 }
