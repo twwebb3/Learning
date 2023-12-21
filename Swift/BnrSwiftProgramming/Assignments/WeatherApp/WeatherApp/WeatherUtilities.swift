@@ -74,7 +74,30 @@ func todaysWeather() {
     print("Here is today's weather: ")
     print("Temperature: \(todaysWeather.temperature)°F")
     print("Wind Condition: \(todaysWeather.windCondition)")
-    print("Wind Speed: \(todaysWeather.windSpeed)")
+    print("Wind Speed: \(todaysWeather.windSpeed) mph")
     print("Cloud Coverage: \(todaysWeather.cloudCoverage)")
     print("Precipitation: There's a \(todaysWeather.precipitationChance)% chance of \(todaysWeather.precipitationType).")
+}
+
+func generateFiveDayForecast() -> [WeatherDay] {
+    var forecast: [WeatherDay] = []
+
+    for _ in 1...5 {
+        let weatherDay = generateWeatherDay()
+        forecast.append(weatherDay)
+    }
+
+    return forecast
+}
+
+func displayFiveDayForecast(forecast: [WeatherDay]) {
+    for (index, weatherDay) in forecast.enumerated() {
+        print("Day \(index + 1):")
+        print("Temperature: \(weatherDay.temperature)°F")
+        print("Wind: \(weatherDay.windCondition) at \(weatherDay.windSpeed) mph")
+        print("Cloud Coverage: \(weatherDay.cloudCoverage)")
+        print("Precipitation Chance: \(weatherDay.precipitationChance)%")
+        print("Precipitation Type: \(weatherDay.precipitationType)")
+        print("----------")
+    }
 }
