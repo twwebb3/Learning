@@ -2,6 +2,7 @@
 import Foundation
 
 struct WeatherDay {
+    var date: Date
     var temperature: Double
     var windCondition: String
     var windSpeed: Int
@@ -52,7 +53,7 @@ func generatePrecipitationType(precipitationChance: Double, temperature: Double)
     }
 }
 
-func generateWeatherDay() -> WeatherDay {
+func generateWeatherDay(date: Date) -> WeatherDay {
     let temperature = generateRandomTemp()
     let windCondition = generateWindCondition()
     let windSpeed = generateWindSpeed(isWindy: windCondition)
@@ -60,7 +61,8 @@ func generateWeatherDay() -> WeatherDay {
     let precipitationChance = generatePrecipitationChance(isCloudy: cloudCoverage)
     let precipitationType = generatePrecipitationType(precipitationChance: precipitationChance, temperature: temperature)
 
-    return WeatherDay(temperature: temperature,
+    return WeatherDay(date: date,
+                      temperature: temperature,
                       windCondition: windCondition,
                       windSpeed: windSpeed,
                       cloudCoverage: cloudCoverage,
@@ -69,7 +71,8 @@ func generateWeatherDay() -> WeatherDay {
 }
 
 func todaysWeather() {
-    let todaysWeather = generateWeatherDay()
+    let today = Date()
+    let todaysWeather = generateWeatherDay(date: today)
     
     print("Here is today's weather: ")
     print("Temperature: \(todaysWeather.temperature)°F")
@@ -81,9 +84,11 @@ func todaysWeather() {
 
 func generateFiveDayForecast() -> [WeatherDay] {
     var forecast: [WeatherDay] = []
+    let today = Date()
 
-    for _ in 1...5 {
-        let weatherDay = generateWeatherDay()
+    for i in 0...4 {
+        let daysFromNow = Calendar.current.date(byAdding: .day, value: i, to: today) ?? Date()
+        let weatherDay = generateWeatherDay(date: daysFromNow)
         forecast.append(weatherDay)
     }
 
@@ -92,7 +97,7 @@ func generateFiveDayForecast() -> [WeatherDay] {
 
 func displayFiveDayForecast(forecast: [WeatherDay]) {
     for (index, weatherDay) in forecast.enumerated() {
-        print("Day \(index + 1):")
+        print("Day \(weatherDay.date):")
         print("Temperature: \(weatherDay.temperature)°F")
         print("Wind: \(weatherDay.windCondition) at \(weatherDay.windSpeed) mph")
         print("Cloud Coverage: \(weatherDay.cloudCoverage)")
