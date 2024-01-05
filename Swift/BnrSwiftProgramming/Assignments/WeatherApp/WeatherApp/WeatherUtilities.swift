@@ -53,7 +53,16 @@ func generatePrecipitationType(precipitationChance: Double, temperature: Double)
     }
 }
 
+func formatDate(date: Date) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateStyle = .medium
+    dateFormatter.timeStyle = .none
+    
+    return dateFormatter.string(from: date)
+}
+
 func generateWeatherDay(date: Date) -> WeatherDay {
+    let formattedDate = formatDate(date: date)
     let temperature = generateRandomTemp()
     let windCondition = generateWindCondition()
     let windSpeed = generateWindSpeed(isWindy: windCondition)
@@ -73,8 +82,9 @@ func generateWeatherDay(date: Date) -> WeatherDay {
 func todaysWeather() {
     let today = Date()
     let todaysWeather = generateWeatherDay(date: today)
+    let formattedDate = formatDate(date: today)
     
-    print("Here is today's weather: ")
+    print("Here is today's (\(formattedDate)) weather: ")
     print("Temperature: \(todaysWeather.temperature)°F")
     print("Wind Condition: \(todaysWeather.windCondition)")
     print("Wind Speed: \(todaysWeather.windSpeed) mph")
@@ -97,7 +107,8 @@ func generateFiveDayForecast() -> [WeatherDay] {
 
 func displayFiveDayForecast(forecast: [WeatherDay]) {
     for (index, weatherDay) in forecast.enumerated() {
-        print("Day \(weatherDay.date):")
+        let formattedDate = formatDate(date: weatherDay.date)
+        print("\(formattedDate):")
         print("Temperature: \(weatherDay.temperature)°F")
         print("Wind: \(weatherDay.windCondition) at \(weatherDay.windSpeed) mph")
         print("Cloud Coverage: \(weatherDay.cloudCoverage)")
