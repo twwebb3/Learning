@@ -6,12 +6,47 @@ following data:
 Description of the part kept in the bin
 Number of parts in the bin
 
-The course grade should then be stored in the Grade member of each structure. Once 
-all this data is calculated, a table should be displayed on the screen listing each 
-student's name, ID number, average test score, and course grade.
+The program should have an array of 10 bins, initialized with the following data:
 
-Input Validation: Be sure all the data for each student is entered. Do not accept 
-negative numbers for any test score.
+Number of Parts in the Bin
+
+
+Part Description
+Valve
+10
+5
+Bearing
+15
+Bushing
+21
+Coupling
+7
+Flange
+5
+Gear
+
+Gear Housing
+25
+Vacuum Gripper
+18
+Cable
+12
+Rod
+
+The program should have the following functions:
+AddParts:
+a function that increases a specific bin's part count by a specified number.
+RemoveParts: a function that decreases a specific bin's part count by a specified number.
+
+When the program runs, it should repeat a loop that performs the following steps:
+The user should see a list of what each bin holds and how many parts are in each bin.
+The user can choose to either quit the program or select a bin. When a bin is selected, 
+the user can either add parts to it or remove parts from it. The loop then repeats, 
+showing the updated bin data on the screen.
+
+Input Validation: No bin can hold more than 30 parts, so don't let the user add more 
+than a bin can bold. Also, don't accept negative values for the number of parts being 
+added or removed.
 */
 
 #include <iostream>
@@ -30,13 +65,18 @@ void displayBin(InventoryBin);
 
 int main()
 {
-    InventoryBin bin1 = {"Part 1", 100};
-    InventoryBin bin2 = {"Part 2", 100};
-    InventoryBin bin3 = {"Part 3", 100};
-    InventoryBin bin4 = {"Part 4", 100};
-    InventoryBin bin5 = {"Part 5", 100};
+    InventoryBin bin1 = {"Valve", 10};
+    InventoryBin bin2 = {"Bearing", 5};
+    InventoryBin bin3 = {"Bushing", 15};
+    InventoryBin bin4 = {"Coupling", 21};
+    InventoryBin bin5 = {"Flange", 7};
+    InventoryBin bin6 = {"Gear", 5};
+    InventoryBin bin7 = {"Gear Housing", 25};
+    InventoryBin bin8 = {"Vacuum Gripper", 18};
+    InventoryBin bin9 = {"Cable", 12};
+    InventoryBin bin10 = {"Rod", 9};
 
-    InventoryBin bins[5] = {bin1, bin2, bin3, bin4, bin5};
+    InventoryBin bins[10] = {bin1, bin2, bin3, bin4, bin5, bin6, bin7, bin8, bin9, bin10};
 
     int choice = 0;
     int binNumber = 0;
