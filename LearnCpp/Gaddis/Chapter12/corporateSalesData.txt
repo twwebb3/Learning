@@ -1,0 +1,12 @@
+Division Name: abc
+Quarter: 2
+Quarterly Sales: 100
+Division Name: def
+Quarter: 2
+Quarterly Sales: 200
+Division Name: ghi
+Quarter: 2
+Quarterly Sales: 300
+Division Name: jkl
+Quarter: 2
+Quarterly Sales: 400
