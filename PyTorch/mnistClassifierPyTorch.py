@@ -17,8 +17,8 @@ def read_pkl(filepath):
     pkl_file.close()
     return temp
 
-# Specify device 135.07
-device = torch.device('mps')
+# specify device according to if Mac M1 machine is used or NVIDIA GPU is available.
+device = torch.device('cuda:0' if torch.cuda.is_available() else 'mlp')
 
 X_train = read_pkl(filepath = 'data/x_train_mnist.pkl')
 X_test = read_pkl(filepath = 'data/x_test_mnist.pkl')
