@@ -1,63 +1,62 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Apr 11 11:48:53 2019
 
-@author: twebb
-"""
 
 import numpy as np
 import matplotlib.pyplot as plt
-
-import torch
-import torchvision.transforms as transforms
-import fastai
+import pickle
+from fastai.vision.all import *
 
 def read_pkl(filepath):
-    import pickle
-    pkl_file = open(filepath, 'rb')
-    temp = pickle.load(pkl_file)
-    pkl_file.close()
-    return temp
+    with open(filepath, 'rb') as pkl_file:
+        return pickle.load(pkl_file)
 
-X_train = read_pkl(filepath = 'data/x_train_mnist.pkl')
-X_test = read_pkl(filepath = 'data/x_test_mnist.pkl')
-Y_train = read_pkl(filepath = 'data/y_train_mnist.pkl')
-Y_test = read_pkl(filepath = 'data/y_test_mnist.pkl')
+# Load data
+X_train = read_pkl(filepath='data/x_train_mnist.pkl')
+X_test = read_pkl(filepath='data/x_test_mnist.pkl')
+Y_train = read_pkl(filepath='data/y_train_mnist.pkl')
+Y_test = read_pkl(filepath='data/y_test_mnist.pkl')
 
+# Convert numpy arrays to tensors
+X_train_tensor = torch.tensor(X_train).float().unsqueeze(1)
+X_test_tensor = torch.tensor(X_test).float().unsqueeze(1)
+Y_train_tensor = torch.tensor(Y_train).long()
+Y_test_tensor = torch.tensor(Y_test).long()
 
-print(np.shape(X_train))
-print(np.shape(X_test))
-print(np.shape(Y_train))
-print(np.shape(Y_test))
+# Create DataLoaders
+dls = DataLoaders.from_tensor((X_train_tensor, Y_train_tensor), (X_test_tensor, Y_test_tensor), bs=32, shuffle_train=True)
 
-im_index=0
-print(Y_train[im_index])
-plt.imshow(X_train[im_index])
+# Define the model
+class Net(Module):
+    def __init__(self):
+        self.conv1 = nn.Conv2d(1, 32, kernel_size=5, padding=2)
+        self.bn1 = nn.BatchNorm2d(32)
+        self.conv2 = nn.Conv2d(32, 64, kernel_size=5, padding=2)
+        self.bn2 = nn.BatchNorm2d(64)
+        self.conv3 = nn.Conv2d(64, 128, kernel_size=5, padding=2)
+        self.bn3 = nn.BatchNorm2d(128)
+        self.fc1 = nn.Linear(3*3*128, 512)
+        self.fc2 = nn.Linear(512, 256)
+        self.fc3 = nn.Linear(256, 10)
 
+    def forward(self, x):
+        x = F.relu(self.bn1(self.conv1(x)))
+        x = F.max_pool2d(x, 2)
+        x = F.relu(self.bn2(self.conv2(x)))
+        x = F.max_pool2d(x, 2)
+        x = F.dropout(x, p=0.3, training=self.training)
+        x = F.relu(self.bn3(self.conv3(x)))
+        x = F.max_pool2d(x, 2)
+        x = F.dropout(x, p=0.4, training=self.training)
+        x = x.view(-1, 3 * 3 * 128)
+        x = F.relu(self.fc1(x))
+        x = F.dropout(x, p=0.5, training=self.training)
+        x = F.relu(self.fc2(x))
+        x = F.dropout(x, p=0.5, training=self.training)
+        return F.log_softmax(self.fc3(x), dim=1)
 
-transform = transforms.Compose(
-        [transforms.ToTensor(),
-         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
+# Train the model
+learn = Learner(dls, Net(), loss_func=nn.CrossEntropyLoss(), metrics=accuracy, opt_func=SGD, lr=0.001, cbs=CudaCallback)
+learn.fit(10, lr=0.001)
 
-print(np.unique(Y_test))
-print(np.unique(Y_train))
-
-# convert numpy array to tensor
-X_train_tensor = torch.from_numpy(X_train).type(torch.LongTensor)
-X_test_tensor = torch.from_numpy(X_test).type(torch.LongTensor)
-Y_train_tensor = torch.from_numpy(Y_train).type(torch.LongTensor)
-Y_test_tensor = torch.from_numpy(Y_test).type(torch.LongTensor)
-
-X_train_tensor = X_train_tensor.view(-1, 1,28,28).float()
-X_test_tensor = X_test_tensor.view(-1, 1,28,28).float()
-
-print(type(X_train_tensor))
-
-# PyTorch train and test sets
-train = torch.utils.data.TensorDataset(X_train_tensor, Y_train_tensor)
-test = torch.utils.data.TensorDataset(X_test_tensor, Y_test_tensor)
-
-
-learn = fastai.vision.learner.create_cnn(train, 
-                           models.resnet34, 
-                           metrics=fastai.metrics.error_rate)
+# Evaluate the model
+interp = ClassificationInterpretation.from_learner(learn)
+print(interp.confusion_matrix())
