@@ -8,3 +8,4 @@
 /Swift/BnrSwiftProgramming/Assignments/WeatherApp/WeatherApp.xcodeproj/
 **/.venv/
 *.sqlite3
+*.env
