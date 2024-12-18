@@ -11,12 +11,17 @@ class Game:
         self.player_two_positions = player_two_positions
 
     def update_positions(self, player, position):
+        if position in self.player_one_positions or position in self.player_two_positions:
+            # I don't want a value error, I want to print a message and make the user try again
+            print('Position already taken')
+            return
         if player == 1:
             self.player_one_positions.append(position)
         elif player == 2:
             self.player_two_positions.append(position)
         else:
-            raise ValueError('Invalid player number')
+            print('Invalid player number')
+            return
 
     def render_board(self):
         board = [[' ' for _ in range(3)] for _ in range(3)]
