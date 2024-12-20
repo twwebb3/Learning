@@ -1,4 +1,5 @@
 
+import random
 
 class Game:
     def __init__(self, player_one_positions=None, player_two_positions=None):
@@ -55,3 +56,28 @@ class Game:
                 return 'Player 2 wins!'
 
         return 'No winner yet'
+
+
+class ComputerPlayer:
+    def __init__(self):
+        self.positions = []
+        self.player_numer = 2
+
+    def update_player_number(self, player_number):
+        self.player_number = player_number
+
+    def find_available_positions(self, game):
+        available_positions = []
+        for x in range(3):
+            for y in range(3):
+                if (x, y) not in game.player_one_positions and (x, y) not in game.player_two_positions:
+                    available_positions.append((x, y))
+        return available_positions
+
+    def make_move(self, game):
+        available_positions = self.find_available_positions(game)
+        if available_positions:
+            position = random.choice(available_positions)
+            game.update_positions(self.player_number, position)
+            return True
+        return False
